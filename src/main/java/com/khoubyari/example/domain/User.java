@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
         @UniqueConstraint(name = "UC_USERS_USERNAME", columnNames = "USERNAME")}
 )
 public class User {
+    private static final String SEQ_NAME = "SEQ_USER";
 
     @Id
     @Column(name = "ID")
-    @SequenceGenerator(name = "SEQ_DRUGS", initialValue = 50000)
+    @SequenceGenerator(name = SEQ_NAME, initialValue = 50000)
+    @GeneratedValue(generator = SEQ_NAME, strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "NAME")
